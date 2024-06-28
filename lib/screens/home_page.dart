@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/widgets/food_grid_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,26 +28,15 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 16.0),
             Expanded(
               child: GridView.builder(
-                itemCount: 4,
+                itemCount: foodItems.length,
                 // physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                 ),
-                itemBuilder: (context, index) => Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                  ),
-                  child: const Column(
-                    children: [
-                      Placeholder(
-                        fallbackHeight: 100,
-                      ),
-                      Text('Burger'),
-                      Text('5\$'),
-                    ],
-                  ),
+                itemBuilder: (context, index) => FoodGridItem(
+                  foodItem: foodItems[index],
                 ),
               ),
             ),
