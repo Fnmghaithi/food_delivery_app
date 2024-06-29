@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/screens/bottom_navbar_screen.dart';
 import 'package:food_delivery/screens/home_page.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: false),
-      home: const HomePage(),
+      home: const BottomNavbarScreen(),
     );
   }
 }

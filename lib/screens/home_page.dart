@@ -7,41 +7,32 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: const Text('Foodak - Food Delivery'),
-        elevation: 0,
-      ),
-      drawer: const Drawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                'assets/images/classic_burger.jpg',
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              'assets/images/classic_burger.jpg',
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: GridView.builder(
+              itemCount: foodItems.length,
+              // physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+              ),
+              itemBuilder: (context, index) => FoodGridItem(
+                foodItem: foodItems[index],
               ),
             ),
-            const SizedBox(height: 16.0),
-            Expanded(
-              child: GridView.builder(
-                itemCount: foodItems.length,
-                // physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                ),
-                itemBuilder: (context, index) => FoodGridItem(
-                  foodItem: foodItems[index],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
