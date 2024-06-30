@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/screens/favorites_page.dart';
 import 'package:food_delivery/screens/home_page.dart';
 
 class BottomNavbarScreen extends StatefulWidget {
@@ -19,9 +20,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
 
   List<Widget> bodyOptions = const [
     HomePage(),
-    Center(
-      child: Text('Favorite Page'),
-    ),
+    FavoritesPage(),
     Center(
       child: Text('Account Page'),
     ),
