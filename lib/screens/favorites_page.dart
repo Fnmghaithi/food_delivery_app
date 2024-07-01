@@ -3,17 +3,36 @@ import 'package:flutter/widgets.dart';
 import 'package:food_delivery/models/food_item.dart';
 import 'package:food_delivery/widgets/favorite_item.dart';
 
-class FavoritesPage extends StatelessWidget {
+class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
 
   @override
+  State<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ListView.builder(
-        itemCount: foodItems.length,
-        itemBuilder: (context, index) =>
-            FavoriteItem(foodItem: foodItems[index]),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: foodItems
+              .where((element) => element.isFavorite)
+              .map(
+                (foodItem) => FavoriteItem(
+                  foodItem: foodItem,
+                  onFoodItemPressed: () {
+                    final foodItemIndex = foodItems.indexOf(foodItem);
+                    setState(() {
+                      foodItems[foodItemIndex] =
+                          foodItems[foodItemIndex].copyWith(isFavorite: false);
+                    });
+                  },
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }

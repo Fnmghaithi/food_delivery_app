@@ -3,9 +3,11 @@ import 'package:food_delivery/models/food_item.dart';
 
 class FavoriteItem extends StatelessWidget {
   final FoodItem foodItem;
+  final void Function()? onFoodItemPressed;
   const FavoriteItem({
     super.key,
     required this.foodItem,
+    required this.onFoodItemPressed,
   });
 
   @override
@@ -48,8 +50,12 @@ class FavoriteItem extends StatelessWidget {
               ),
             ),
             // const Spacer(),
-            const Icon(
-              Icons.favorite,
+            IconButton(
+              splashRadius: 24.0,
+              onPressed: onFoodItemPressed,
+              icon: const Icon(
+                Icons.favorite,
+              ),
             ),
           ],
         ),

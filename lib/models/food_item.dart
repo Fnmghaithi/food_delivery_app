@@ -1,9 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class FoodItem {
   final String id;
   final String name;
   final String imgUrl;
   final double price;
   final String categoryId;
+  final bool isFavorite;
 
   FoodItem({
     required this.id,
@@ -11,7 +13,26 @@ class FoodItem {
     required this.imgUrl,
     required this.price,
     required this.categoryId,
+    this.isFavorite = false,
   });
+
+  FoodItem copyWith({
+    String? id,
+    String? name,
+    String? imgUrl,
+    double? price,
+    String? categoryId,
+    bool? isFavorite,
+  }) {
+    return FoodItem(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      imgUrl: imgUrl ?? this.imgUrl,
+      price: price ?? this.price,
+      categoryId: categoryId ?? this.categoryId,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }
 
 List<FoodItem> foodItems = [
