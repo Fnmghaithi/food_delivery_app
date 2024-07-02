@@ -16,23 +16,41 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: foodItems
-              .where((element) => element.isFavorite)
-              .map(
-                (foodItem) => FavoriteItem(
-                  foodItem: foodItem,
-                  onFoodItemPressed: () {
-                    final foodItemIndex = foodItems.indexOf(foodItem);
-                    setState(() {
-                      foodItems[foodItemIndex] =
-                          foodItems[foodItemIndex].copyWith(isFavorite: false);
-                    });
-                  },
+        child: foodItems.where((element) => element.isFavorite).isEmpty
+            ? Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/empty_state.png',
+                      height: 350,
+                      fit: BoxFit.cover,
+                    ),
+                    const Text(
+                      'No Favorite items yet',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
+                    ),
+                  ],
                 ),
               )
-              .toList(),
-        ),
+            : Column(
+                children: foodItems
+                    .where((element) => element.isFavorite)
+                    .map(
+                      (foodItem) => FavoriteItem(
+                        foodItem: foodItem,
+                        onFoodItemPressed: () {
+                          final foodItemIndex = foodItems.indexOf(foodItem);
+                          setState(() {
+                            foodItems[foodItemIndex] = foodItems[foodItemIndex]
+                                .copyWith(isFavorite: false);
+                          });
+                        },
+                      ),
+                    )
+                    .toList(),
+              ),
       ),
     );
   }

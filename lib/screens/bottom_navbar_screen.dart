@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/screens/account_page.dart';
 import 'package:food_delivery/screens/favorites_page.dart';
 import 'package:food_delivery/screens/home_page.dart';
 
@@ -21,9 +22,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   List<Widget> bodyOptions = const [
     HomePage(),
     FavoritesPage(),
-    Center(
-      child: Text('Account Page'),
-    ),
+    AccountPage(),
   ];
 
   @override
