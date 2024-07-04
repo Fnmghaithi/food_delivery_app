@@ -16,6 +16,7 @@ class _FoodGridItemState extends State<FoodGridItem> {
   bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
@@ -30,25 +31,23 @@ class _FoodGridItemState extends State<FoodGridItem> {
               children: [
                 Image.network(
                   foodItems[widget.foodItemIndex].imgUrl,
-                  height: 100,
+                  height: size.height * 0.1,
                   // fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   foodItems[widget.foodItemIndex].name,
-                  style: const TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   '${foodItems[widget.foodItemIndex].price}\$',
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.orange,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: Theme.of(context).primaryColor,
+                      ),
                 ),
               ],
             ),
@@ -77,7 +76,7 @@ class _FoodGridItemState extends State<FoodGridItem> {
                     foodItems[widget.foodItemIndex].isFavorite
                         ? Icons.favorite
                         : Icons.favorite_border,
-                    color: Colors.deepOrange,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),

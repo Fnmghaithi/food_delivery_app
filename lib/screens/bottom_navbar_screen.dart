@@ -28,12 +28,8 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
         title: const Text('Foodak - Food Delivery'),
-        elevation: 0,
       ),
       drawer: const Drawer(),
       body: bodyOptions[bottomNavbarIndex],
@@ -54,7 +50,6 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
             label: 'Account',
           ),
         ],
-        selectedItemColor: Colors.deepOrange,
       ),
     );
   }

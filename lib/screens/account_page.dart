@@ -4,28 +4,29 @@ import 'package:flutter/widgets.dart';
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
-  Widget accountItem({required int counter, required String title}) {
+  Widget accountItem(
+    BuildContext context, {
+    required int counter,
+    required String title,
+  }) {
     return Column(
       children: [
         Text(
           counter.toString(),
-          style: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w600,
-            color: Colors.deepOrange,
-          ),
+          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: Theme.of(context).primaryColor,
+              ),
         ),
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 22,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ],
     );
   }
 
-  Widget orderListTile({
+  Widget orderListTile(
+    BuildContext context, {
     required String title,
     String? subtitle,
     required IconData leadingIcon,
@@ -34,7 +35,7 @@ class AccountPage extends StatelessWidget {
       leading: Icon(
         leadingIcon,
         size: 30,
-        color: Colors.deepOrange,
+        // color: Theme.of(context).primaryColor,
       ),
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle) : null,
@@ -58,47 +59,37 @@ class AccountPage extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/Faisal.JPG'),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Faisal Nasir',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
             ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                accountItem(counter: 50, title: 'Orders'),
-                accountItem(counter: 10, title: 'Vouchers'),
+                accountItem(context, counter: 50, title: 'Orders'),
+                accountItem(context, counter: 10, title: 'Vouchers'),
               ],
             ),
             const SizedBox(height: 16),
-            const Divider(
-              thickness: 1,
-              indent: 24,
-              endIndent: 24,
-            ),
+            const Divider(),
             orderListTile(
+              context,
               title: 'Past Orders',
               // subtitle: 'Here you find your past orders',
               leadingIcon: Icons.shopping_cart,
             ),
-            const Divider(
-              thickness: 1,
-              indent: 24,
-              endIndent: 24,
-            ),
+            const Divider(),
             orderListTile(
+              context,
               title: 'Available Vouchers',
               // subtitle: 'Here you find your past orders',
               leadingIcon: Icons.card_giftcard,
             ),
-            const Divider(
-              thickness: 1,
-              indent: 24,
-              endIndent: 24,
-            ),
+            const Divider(),
           ],
         ),
       ),

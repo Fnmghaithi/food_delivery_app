@@ -25,11 +25,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       height: 350,
                       fit: BoxFit.cover,
                     ),
-                    const Text(
+                    Text(
                       'No Favorite items yet',
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],
                 ),

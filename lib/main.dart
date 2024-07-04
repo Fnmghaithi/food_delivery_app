@@ -13,7 +13,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: false),
+      theme: ThemeData(
+        useMaterial3: false,
+        primarySwatch: Colors.deepOrange,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+        ),
+        scaffoldBackgroundColor: Colors.grey[100],
+        dividerTheme: const DividerThemeData(
+          thickness: 1,
+          indent: 24,
+          endIndent: 24,
+        ),
+        listTileTheme: const ListTileThemeData(
+          iconColor: Colors.deepOrange,
+        ),
+        fontFamily: 'Open Sans',
+      ),
       home: const BottomNavbarScreen(),
     );
   }
