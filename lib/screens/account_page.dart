@@ -31,18 +31,23 @@ class AccountPage extends StatelessWidget {
     String? subtitle,
     required IconData leadingIcon,
   }) {
-    return ListTile(
-      leading: Icon(
-        leadingIcon,
-        size: 30,
-        // color: Theme.of(context).primaryColor,
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: ListTile(
+        leading: Icon(
+          leadingIcon,
+          size: size.height * 0.03,
+          // color: Theme.of(context).primaryColor,
+        ),
+        title: Text(title),
+        subtitle: subtitle != null ? Text(subtitle) : null,
+        trailing: Icon(
+          Icons.chevron_right,
+          size: size.height * 0.03,
+        ),
+        onTap: () {},
       ),
-      title: Text(title),
-      subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: const Icon(
-        Icons.chevron_right,
-      ),
-      onTap: () {},
     );
   }
 

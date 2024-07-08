@@ -12,6 +12,8 @@ class FavoriteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
@@ -22,8 +24,8 @@ class FavoriteItem extends StatelessWidget {
           children: [
             Image.network(
               foodItem.imgUrl,
-              height: 80,
-              width: 100,
+              height: size.height * 0.08,
+              width: size.height * 0.1,
             ),
             const SizedBox(width: 8.0),
             Expanded(
@@ -51,8 +53,9 @@ class FavoriteItem extends StatelessWidget {
             IconButton(
               splashRadius: 24.0,
               onPressed: onFoodItemPressed,
-              icon: const Icon(
+              icon: Icon(
                 Icons.favorite,
+                size: size.height * 0.03,
               ),
             ),
           ],

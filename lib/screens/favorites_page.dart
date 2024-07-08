@@ -13,6 +13,8 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -22,7 +24,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   children: [
                     Image.asset(
                       'assets/images/empty_state.png',
-                      height: 350,
+                      height: size.height * 0.4,
                       fit: BoxFit.cover,
                     ),
                     Text(
